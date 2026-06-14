@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://garvitsharma0.github.io/sitemap.xml

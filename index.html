@@ -4,306 +4,689 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Garvit's Portfolio</title>
+    <title>Garvit Sharma — Data Analyst &amp; AI Automation Engineer | Noida, India</title>
+    <meta
+      name="description"
+      content="Garvit Sharma is a data analyst and AI automation engineer in Noida, India — building analytics, data science, machine learning and LLM / MCP agent pipelines across the data stack."
+    />
+    <meta name="keywords" content="Garvit Sharma, data analyst, AI automation engineer, data scientist, machine learning, data engineer, LLM, MCP agents, Power BI, SQL, Python, Noida" />
+    <meta name="author" content="Garvit Sharma" />
+    <meta name="theme-color" content="#0a0c12" />
+    <link rel="canonical" href="https://garvitsharma0.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Garvit Sharma — Data &amp; AI Engineer" />
+    <meta
+      property="og:description"
+      content="Analytics · Data Science · ML · Data Engineering · AI Automation. Turning manual workflows into reliable, auditable systems."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Garvit Sharma" />
+    <meta property="og:url" content="https://garvitsharma0.github.io/" />
+    <meta
+      property="og:image"
+      content="https://garvitsharma0.github.io/assets/og.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Garvit Sharma — Data Analytics, Data Science, ML & AI Automation" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Garvit Sharma — Data &amp; AI Engineer" />
+    <meta
+      name="twitter:description"
+      content="Analytics · Data Science · ML · Data Engineering · AI Automation."
+    />
+    <meta
+      name="twitter:image"
+      content="https://garvitsharma0.github.io/assets/og.png"
+    />
+
+    <!-- Person structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Garvit Sharma",
+        "jobTitle": "Data Analyst & AI Automation Engineer",
+        "description": "Data analyst and AI automation engineer building analytics, data science, machine learning, data engineering and LLM / MCP agent pipelines.",
+        "url": "https://garvitsharma0.github.io/",
+        "worksFor": { "@type": "Organization", "name": "OshoData" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Noida", "addressRegion": "Uttar Pradesh", "addressCountry": "IN" },
+        "knowsAbout": ["Data Analysis", "Data Science", "Machine Learning", "Data Engineering", "AI Automation", "LLM Pipelines", "MCP Agents", "SQL", "Python", "Power BI", "dbt", "PySpark"],
+        "sameAs": [
+          "https://github.com/GarvitSharma0",
+          "https://www.linkedin.com/in/garvitsharma1/"
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
+
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
   </head>
   <body>
-    <nav id="desktop-nav">
-      <div class="logo">Garvit Sharma</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+    <!-- section progress navigator (left, desktop) -->
+    <nav class="spine" id="spine" aria-label="Section progress">
+      <svg class="spine__svg" viewBox="0 0 60 1000" preserveAspectRatio="none" aria-hidden="true">
+        <path
+          class="spine__track"
+          d="M30 0 C 8 90 52 180 30 270 S 8 450 30 540 S 52 720 30 810 S 8 950 30 1000"
+        />
+        <path
+          class="spine__progress"
+          pathLength="1"
+          d="M30 0 C 8 90 52 180 30 270 S 8 450 30 540 S 52 720 30 810 S 8 950 30 1000"
+        />
+      </svg>
+      <span class="spine__head" aria-hidden="true"></span>
+      <a class="spine__node" href="#about" data-target="about"><span class="spine__dot"></span><span class="spine__label">About</span></a>
+      <a class="spine__node" href="#experience" data-target="experience"><span class="spine__dot"></span><span class="spine__label">Experience</span></a>
+      <a class="spine__node" href="#skills" data-target="skills"><span class="spine__dot"></span><span class="spine__label">Skills</span></a>
+      <a class="spine__node" href="#projects" data-target="projects"><span class="spine__dot"></span><span class="spine__label">Projects</span></a>
+      <a class="spine__node" href="#contact" data-target="contact"><span class="spine__dot"></span><span class="spine__label">Contact</span></a>
     </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Garvit Sharma</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="assets/profile-pic.png" alt="Garvit Sharma profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Garvit Sharma</h1>
-        <p class="section__text__p2">Data Analyst</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('assets/Garvits_Resume1.pdf')"
-          >
-            Resume
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://www.linkedin.com/in/garvitsharma1/'"
-          />
-          <img
-            src="assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/GarvitSharma0'"
-          />
-        </div>
-      </div>
-    </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="assets/notebook.png"
-                alt="Notebook icon"
-                class="icon"
-              />
-              <h3>Projects</h3>
-              <p>8+ Data Analysis <br />Projects Completed</p>
-            </div>
-            <div class="details-container">
-              <img
-                src="assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>Data Analyst Intern <br /><a href="https://dogowala.in" target="_blank">dogowala.in</a></p>
-            </div>
-            <div class="details-container">
-              <img
-                src="assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>
-                B.Tech. in Computer Science<br />Bennett University<br />CGPA: <b>8.61</b>
-              </p>
-            </div>
-          </div>
-          <div class="text-container">
-            <p>
-              A highly motivated and results-driven Data Analyst and CSE student with a strong foundation in data visualization, analysis, and dashboard development. I have a proven track record of translating complex datasets into actionable business insights, as demonstrated by building interactive Power BI dashboards that boosted sales by 25% and optimizing data collection pipelines. With expertise in Python, SQL, and BI tools, I am eager to leverage my skills to drive data-informed strategies and enable smarter decision-making.
-            </p>
-          </div>
-        </div>
-      </div>
-      <img
-        src="assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
-    </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="exp-section-content">
-          <div class="exp-list-container">
-            <h2 class="experience-sub-title exp-title-spacing">dogowala.in (Startup)</h2>
-            <ul>
-              <li>Boosted sales by 25% by analyzing market trends and consumer behavior to identify a market gap. I then proposed and launched a new product line tailored to meet unmet customer needs, directly driving this significant revenue growth.</li>
-              <li>Developed Power BI Dashboards: Built and deployed over five Power BI dashboards with SQL data pipelines. These dashboards provided real-time analytics on sales, product, and revenue, enabling stakeholders to make faster, data-informed decisions.</li>
-              <li>Optimized Data Processes: Optimized SQL-based ETL processes to improve data accuracy and accelerate decision-making. These enhancements streamlined data flow, ensuring that teams had reliable, up-to-date information for product and business strategy.</li>
-            </ul>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title exp-title-spacing">Data Analytics & Tools</h2>
-            <div class="article-container">
-              <article>
-                <div>
-                  <h3>Programming Languages</h3>
-                  <p>Python (Pandas, NumPy, SciPy, MatPlotLib, Scikit-learn)</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>AI/ML Frameworks</h3>
-                  <p>TensorFlow, PyTorch</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>Databases</h3>
-                  <p>MySQL, PostgreSQL</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>BI and Visualization Tools</h3>
-                  <p>Power BI, Tableau</p>
-                </div>
-              </article>
-              <article>
-                <div>
-                  <h3>Other Tools</h3>
-                  <p>Git, GitHub, Linux, MS Excel, Hadoop, A/B Testing, Power Query</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
-    </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="assets/project-1.png"
-                alt="Project 1"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Ad-hoc Consumer Goods Analysis</h2>
-            <div class="tools-container">
-              <h4>Tools: <span>SQL, Power BI, Excel</span></h4>
-            </div>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/GarvitSharma0/ad_hoc_analysis_of_consumer_goods'"
-              >
-                Github
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="assets/project-2.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Sales Insights</h2>
-            <div class="tools-container">
-              <h4>Tools: <span>Power BI, Excel</span></h4>
-            </div>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/GarvitSharma0/sales-analytics-chocolates'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://app.powerbi.com/view?r=eyJrIjoiNjg2MzhmYjgtZTMzYi00N2Y5LWIxOWEtYzU3NTE3YmJjMzYyIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9&pageName=ReportSection'"
-              >
-                Live Dashboard
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="assets/project-3.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">P&L Report-AtliQ Hardware</h2>
-            <div class="tools-container">
-              <h4>Tools: <span>Excel, Pivot Tables, DAX, Power Query</span></h4>
-            </div>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/GarvitSharma0/Sales-Finance-analytics'"
-              >
-                Github
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <img
-        src="assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:garvits5.work@gmail.com">garvits5.work@gmail.com</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com/in/garvitsharma1/">LinkedIn</a></p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="assets/phone.png"
-            alt="Phone icon"
-            class="icon contact-icon"
-          />
-          <p><a href="tel:+916375973176">+91 6375973176</a></p>
-        </div>
-      </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
+
+    <!-- animated 3D particle-wave backdrop -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- ====================== NAV ====================== -->
+    <header class="nav" id="nav">
+      <a href="#hero" class="nav__logo">
+        <span class="nav__logo-bracket">&lt;</span>garvit<span
+          class="nav__logo-slash"
+          >/</span
+        ><span class="nav__logo-bracket">&gt;</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <p>Garvit Sharma</p>
+
+      <div class="nav__actions">
+        <a class="btn btn--ghost btn--sm" href="assets/Garvits_Resume1.pdf" target="_blank" rel="noopener"
+          >Resume</a
+        >
+        <button
+          class="nav__burger"
+          id="nav-burger"
+          aria-label="Open menu"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- mobile menu -->
+    <div class="menu-scrim" id="menu-scrim" aria-hidden="true"></div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true" inert>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--primary" href="assets/Garvits_Resume1.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+
+    <main>
+      <!-- ====================== HERO ====================== -->
+      <section id="hero" class="hero">
+        <div class="hero__inner">
+          <p class="hero__eyebrow reveal">
+            <span class="prompt">$</span> whoami
+          </p>
+          <h1 class="hero__name reveal">Garvit Sharma</h1>
+
+          <div class="hero__roles reveal">
+            <span class="hero__roles-rotator" id="role-rotator"
+              ><span class="hero__role">Data Analytics &amp; Science</span></span
+            >
+            <span class="hero__caret" aria-hidden="true"></span>
+          </div>
+
+          <p class="hero__tagline reveal">
+            Across the full data stack — from
+            <strong>analytics</strong> and <strong>machine&nbsp;learning</strong>
+            to <strong>pipelines</strong> and <strong>AI&nbsp;agents</strong> —
+            turning slow, manual workflows into reliable, auditable systems.
+          </p>
+
+          <div class="hero__cta reveal">
+            <a href="#projects" class="btn btn--primary">View Projects</a>
+            <a href="#contact" class="btn btn--ghost">Get in touch</a>
+          </div>
+
+          <div class="hero__socials reveal" aria-label="Social links">
+            <a
+              href="https://github.com/GarvitSharma0"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+              class="social"
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.24 2.75.12 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/garvitsharma1/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+              class="social"
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0Z"
+                />
+              </svg>
+            </a>
+            <a href="mailto:garvits5.work@gmail.com" aria-label="Email" class="social">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm10 9 8-5V6l-8 5-8-5v2l8 5Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <a href="#about" class="hero__scroll" aria-label="Scroll to about">
+          <span></span>
+        </a>
+      </section>
+
+      <!-- ====================== ABOUT ====================== -->
+      <section id="about" class="section">
+        <header class="section__head reveal">
+          <p class="section__kicker"><span class="prompt">$</span> cat about.md</p>
+          <h2 class="section__title">About</h2>
+        </header>
+
+        <div class="about">
+          <div class="about__portrait reveal">
+            <div class="about__portrait-stage">
+              <img
+                src="assets/profile-cut.png"
+                alt="Garvit Sharma"
+                width="852"
+                height="1052"
+              />
+            </div>
+            <div class="about__badge">
+              <span class="dot"></span> Open to opportunities
+            </div>
+          </div>
+
+          <div class="about__body">
+            <p class="reveal">
+              I'm a Computer Science engineer working at the
+              intersection of <strong>data analytics, data science, machine
+              learning, data engineering</strong> and <strong>AI automation</strong>.
+            </p>
+            <p class="reveal">
+              At <strong>OshoData</strong> I build AI-powered tooling for
+              institutional real estate — fund-reporting automation, investor-statement
+              pipelines, housing-analytics dashboards and LLM / MCP agent systems —
+              turning slow, manual financial workflows into reliable, auditable
+              pipelines. I'm comfortable end-to-end: from a SQL query and a Power BI
+              report to a Dagster + dbt warehouse and an agentic LLM pipeline.
+            </p>
+
+            <div class="stats">
+              <div class="stat reveal">
+                <span class="stat__num" data-count="10" data-suffix="+">0</span>
+                <span class="stat__label">Projects shipped</span>
+              </div>
+              <div class="stat reveal">
+                <span class="stat__num" data-count="6" data-suffix="+">0</span>
+                <span class="stat__label">Data pipelines shipped</span>
+              </div>
+              <div class="stat reveal">
+                <span class="stat__num" data-count="5" data-suffix="+">0</span>
+                <span class="stat__label">Dashboards deployed</span>
+              </div>
+              <div class="stat reveal">
+                <span class="stat__num" data-count="20" data-suffix="+">0</span>
+                <span class="stat__label">Tools &amp; frameworks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== EXPERIENCE ====================== -->
+      <section id="experience" class="section">
+        <header class="section__head reveal">
+          <p class="section__kicker"><span class="prompt">$</span> git log --experience</p>
+          <h2 class="section__title">Experience</h2>
+        </header>
+
+        <div class="timeline">
+          <article class="tl reveal">
+            <div class="tl__marker"><span></span></div>
+            <div class="tl__card">
+              <div class="tl__top">
+                <h3 class="tl__role">Data Analytics &amp; Engineering · AI Automation</h3>
+                <span class="tl__date">Apr 2026 — Present</span>
+              </div>
+              <p class="tl__org">
+                <a href="https://oshodata.com" target="_blank" rel="noopener" class="tl__link">oshodata.com
+                  <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M7 17 17 7M9 7h8v8"/></svg>
+                </a>
+                <span class="tl__sep">·</span>
+                <span class="tl__meta">Real Estate &times; AI</span>
+                <span class="tl__sep">·</span>
+                <span class="tl__meta">Noida, India</span>
+              </p>
+              <ul class="tl__points">
+                <li>
+                  Built <strong>fund-reporting automation</strong> that fills and QCs
+                  formula-driven quarterly workbooks — <strong>cutting a multi-day manual
+                  process to under an hour (~90% less effort per cycle)</strong> and flagging
+                  reconciliation breaks with mechanical confidence scoring.
+                </li>
+                <li>
+                  Designed <strong>investor-statement pipelines</strong> — multi-stage,
+                  human-in-the-loop systems that source answers from data warehouses to
+                  <strong>generate client deliverables in minutes instead of days</strong>
+                  across <strong>hundreds of datapoints</strong>.
+                </li>
+                <li>
+                  Shipped <strong>housing-analytics dashboards</strong> over FRED / Census /
+                  market data for <strong>50+ metros</strong>, on a pressure-based indicator
+                  framework.
+                </li>
+                <li>
+                  Engineered <strong>LLM &amp; MCP agent pipelines</strong> and a
+                  news-enrichment scraper that <strong>classifies and paraphrases 1,000+
+                  real-estate articles a day</strong>, plus metro-level demand/supply ML
+                  forecasting that beats persistence baselines.
+                </li>
+              </ul>
+              <div class="tl__stack">
+                <span>Python</span><span>SQL</span><span>dbt</span><span>Dagster</span
+                ><span>BigQuery</span><span>GCP</span><span>Supabase</span
+                ><span>LLM / MCP</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="tl reveal">
+            <div class="tl__marker"><span></span></div>
+            <div class="tl__card">
+              <div class="tl__top">
+                <h3 class="tl__role">Data Analyst Intern</h3>
+                <span class="tl__date">May — Oct 2025</span>
+              </div>
+              <p class="tl__org">
+                <a href="https://dogowala.in" target="_blank" rel="noopener" class="tl__link">dogowala.in
+                  <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M7 17 17 7M9 7h8v8"/></svg>
+                </a>
+                <span class="tl__sep">·</span>
+                <span class="tl__meta">Startup</span>
+                <span class="tl__sep">·</span>
+                <span class="tl__meta">Greater Noida, India</span>
+              </p>
+              <ul class="tl__points">
+                <li>
+                  <strong>Boosted sales by 25%</strong> by analyzing market trends and
+                  consumer behavior to launch a new, demand-led product line.
+                </li>
+                <li>
+                  Built and deployed <strong>5+ Power BI dashboards</strong> backed by SQL
+                  data pipelines for real-time sales, product and revenue analytics.
+                </li>
+                <li>
+                  Optimized SQL-based ETL processes, improving data accuracy and
+                  accelerating product decisions.
+                </li>
+              </ul>
+              <div class="tl__stack">
+                <span>Power BI</span><span>SQL</span><span>ETL</span><span>Excel</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ====================== SKILLS ====================== -->
+      <section id="skills" class="section">
+        <header class="section__head reveal">
+          <p class="section__kicker"><span class="prompt">$</span> ls ~/skills</p>
+          <h2 class="section__title">Skills &amp; Tools</h2>
+        </header>
+
+        <div class="skills">
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="skill-card__idx">01</span> Languages</h3>
+            <div class="chips">
+              <span>Python</span><span>SQL</span><span>JavaScript</span><span>C++</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="skill-card__idx">02</span> AI &amp; Automation</h3>
+            <div class="chips">
+              <span>LLM Pipelines</span><span>MCP / AI Agents</span><span>RAG</span
+              ><span>Claude &amp; OpenAI APIs</span><span>Hugging Face</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="skill-card__idx">03</span> ML &amp; Data Science</h3>
+            <div class="chips">
+              <span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span
+              ><span>Transformers</span><span>XGBoost</span><span>Pandas</span
+              ><span>NumPy</span><span>spaCy</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="skill-card__idx">04</span> Data Engineering</h3>
+            <div class="chips">
+              <span>dbt</span><span>Dagster</span><span>BigQuery</span><span>Google Cloud</span
+              ><span>Supabase</span><span>PostgreSQL</span><span>DuckDB</span><span>Docker</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="skill-card__idx">05</span> Big Data &amp; Processing</h3>
+            <div class="chips">
+              <span>PySpark</span><span>Spark SQL</span><span>Polars</span><span>Parquet</span>
+            </div>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3 class="skill-card__title"><span class="skill-card__idx">06</span> Analytics &amp; BI</h3>
+            <div class="chips">
+              <span>Power BI</span><span>Tableau</span><span>DAX</span><span>Power Query</span
+              ><span>Plotly</span><span>A/B Testing</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="skills__tools reveal">
+          <span class="skills__tools-label">Also fluent with</span>
+          <div class="marquee">
+            <div class="marquee__track">
+              <span>Git</span><span>GitHub</span><span>Linux</span><span>Jupyter</span
+              ><span>FastAPI</span><span>REST APIs</span
+              ><span>ETL</span><span>Data Modeling</span><span>Airtable</span><span>Notion</span>
+              <!-- duplicate for seamless loop -->
+              <span>Git</span><span>GitHub</span><span>Linux</span><span>Jupyter</span
+              ><span>FastAPI</span><span>REST APIs</span
+              ><span>ETL</span><span>Data Modeling</span><span>Airtable</span><span>Notion</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== PROJECTS ====================== -->
+      <section id="projects" class="section">
+        <header class="section__head reveal">
+          <p class="section__kicker"><span class="prompt">$</span> ls ~/projects --featured</p>
+          <h2 class="section__title">Featured Projects</h2>
+        </header>
+
+        <div class="projects">
+          <!-- 1 — Swasth-Kethi -->
+          <article class="project reveal">
+            <div class="project__glow"></div>
+            <div class="project__head">
+              <span class="project__tag">ML · Computer Vision</span>
+              <span class="project__no">01</span>
+            </div>
+            <h3 class="project__title">Swasth-Kethi — Plant Disease Detection</h3>
+            <p class="project__desc">
+              A Swin Transformer that detects 38 plant-disease classes from a leaf photo,
+              paired with a multilingual (150+ languages) React UI and a Django AI chatbot
+              that explains causes, cures and prevention — optimized for low-power edge use.
+            </p>
+            <ul class="project__metrics">
+              <li><b>98.94%</b> val accuracy</li>
+              <li><b>100k+</b> images</li>
+              <li><b>150+</b> languages</li>
+            </ul>
+            <div class="project__stack">
+              <span>PyTorch</span><span>Swin Transformer</span><span>React</span><span>Django</span>
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/GarvitSharma0/Swasth-Kethi" target="_blank" rel="noopener" class="project__link">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.24 2.75.12 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg> Code
+              </a>
+            </div>
+          </article>
+
+          <!-- 2 — Insurance Risk -->
+          <article class="project reveal">
+            <div class="project__glow"></div>
+            <div class="project__head">
+              <span class="project__tag">Data Science · Risk</span>
+              <span class="project__no">02</span>
+            </div>
+            <h3 class="project__title">Insurance Portfolio Simulation &amp; Risk</h3>
+            <p class="project__desc">
+              Simulated an insurance portfolio in SQL + Python to evaluate profitability and
+              risk — premium revenue, claim-cost trends, loss ratios by tenure, and
+              estimated future liabilities under varying claim-frequency assumptions.
+            </p>
+            <ul class="project__metrics">
+              <li><b>3-yr</b> policies most profitable</li>
+              <li><b>Loss ratio &gt; 1</b> flagged</li>
+              <li><b>Liability</b> forecasting</li>
+            </ul>
+            <div class="project__stack">
+              <span>Python</span><span>Pandas</span><span>SQLite</span><span>Seaborn</span>
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/GarvitSharma0/Insurance-Portfolio-Simulation-Risk-Analysis-SQL-Python-" target="_blank" rel="noopener" class="project__link">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.24 2.75.12 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg> Code
+              </a>
+            </div>
+          </article>
+
+          <!-- 3 — Ad-hoc Consumer Goods -->
+          <article class="project reveal">
+            <div class="project__glow"></div>
+            <div class="project__head">
+              <span class="project__tag">Data Analytics · SQL</span>
+              <span class="project__no">03</span>
+            </div>
+            <h3 class="project__title">Ad-hoc Consumer Goods Analysis</h3>
+            <p class="project__desc">
+              Answered 10+ executive business requests with SQL over a 2M+ row database,
+              translating queries into a decision-ready story — surfacing the Retailer
+              channel's dominant contribution and optimizing report performance.
+            </p>
+            <ul class="project__metrics">
+              <li><b>2M+</b> rows</li>
+              <li><b>72.6%</b> channel insight</li>
+              <li><b>50%</b> faster queries</li>
+            </ul>
+            <div class="project__stack">
+              <span>SQL</span><span>Power BI</span><span>Excel</span><span>Views / Procs</span>
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/GarvitSharma0/ad_hoc_analysis_of_consumer_goods" target="_blank" rel="noopener" class="project__link">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.24 2.75.12 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg> Code
+              </a>
+            </div>
+          </article>
+
+          <!-- 4 — Sales Insights (live) -->
+          <article class="project reveal">
+            <div class="project__glow"></div>
+            <div class="project__head">
+              <span class="project__tag">BI · Visualization</span>
+              <span class="project__no">04</span>
+            </div>
+            <h3 class="project__title">Sales Insights — Awesome Chocolates</h3>
+            <p class="project__desc">
+              A multi-functional Power BI dashboard over Excel/CSV sources analyzing sales,
+              profit margins and operational efficiency — tuned with DAX Studio and built to
+              reverse a sales decline and lift margins by region and rep.
+            </p>
+            <ul class="project__metrics">
+              <li><b>10.8%</b> decline reversed</li>
+              <li><b>$34M</b> sales modeled</li>
+              <li><b>Live</b> dashboard</li>
+            </ul>
+            <div class="project__stack">
+              <span>Power BI</span><span>DAX</span><span>DAX Studio</span><span>Excel</span>
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/GarvitSharma0/sales-analytics-chocolates" target="_blank" rel="noopener" class="project__link">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.24 2.75.12 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg> Code
+              </a>
+              <a href="https://app.powerbi.com/view?r=eyJrIjoiNjg2MzhmYjgtZTMzYi00N2Y5LWIxOWEtYzU3NTE3YmJjMzYyIiwidCI6ImM2ZTU0OWIzLTVmNDUtNDAzMi1hYWU5LWQ0MjQ0ZGM1YjJjNCJ9&pageName=ReportSection" target="_blank" rel="noopener" class="project__link project__link--accent">
+                Live Demo <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M7 17 17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 5 — P&L Report -->
+          <article class="project reveal">
+            <div class="project__glow"></div>
+            <div class="project__head">
+              <span class="project__tag">BI · Finance</span>
+              <span class="project__no">05</span>
+            </div>
+            <h3 class="project__title">P&amp;L Report — AtliQ Hardware</h3>
+            <p class="project__desc">
+              A finance &amp; sales P&amp;L report for a global hardware company — fiscal-year
+              and market-level statements built with Power Query ETL, a Power Pivot data
+              model and DAX measures for granular revenue and expense insight.
+            </p>
+            <ul class="project__metrics">
+              <li><b>+30%</b> report accuracy</li>
+              <li><b>~4 hrs</b> saved / cycle</li>
+              <li><b>P&amp;L</b> by market &amp; FY</li>
+            </ul>
+            <div class="project__stack">
+              <span>Excel</span><span>Power Query</span><span>Power Pivot</span><span>DAX</span>
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/GarvitSharma0/P-and-L-Sales-Finance-analytics" target="_blank" rel="noopener" class="project__link">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.24 2.75.12 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg> Code
+              </a>
+            </div>
+          </article>
+
+          <!-- 6 — Sentiment Analysis -->
+          <article class="project reveal">
+            <div class="project__glow"></div>
+            <div class="project__head">
+              <span class="project__tag">Big Data · NLP</span>
+              <span class="project__no">06</span>
+            </div>
+            <h3 class="project__title">Sentiment Analysis at Scale</h3>
+            <p class="project__desc">
+              An end-to-end PySpark MLlib pipeline over consumer-product reviews —
+              tokenization, lemmatization, TF-IDF — training and tuning six classifiers
+              (LogReg, GBT, Random Forest, Naive Bayes, MLP, Decision Tree) with
+              cross-validation and a full metric comparison.
+            </p>
+            <ul class="project__metrics">
+              <li><b>~98%</b> accuracy</li>
+              <li><b>~0.99</b> ROC-AUC</li>
+              <li><b>6</b> models compared</li>
+            </ul>
+            <div class="project__stack">
+              <span>PySpark</span><span>Spark MLlib</span><span>spaCy</span><span>Spark SQL</span>
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/GarvitSharma0/Sentiment-Analysis-Big-Data" target="_blank" rel="noopener" class="project__link">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.94c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.75.4-1.27.73-1.56-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.24 2.75.12 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg> Code
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <div class="projects__more reveal">
+          <p>More on GitHub — HR Presence Insights, The Music Prescription, and more.</p>
+          <a href="https://github.com/GarvitSharma0" target="_blank" rel="noopener" class="btn btn--ghost">
+            View all repositories
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- ====================== CONTACT ====================== -->
+      <section id="contact" class="section section--contact">
+        <header class="section__head reveal">
+          <p class="section__kicker"><span class="prompt">$</span> ./contact.sh</p>
+          <h2 class="section__title">Let's build something</h2>
+        </header>
+
+        <p class="contact__lead reveal">
+          Open to roles and collaborations across analytics, ML, data engineering and AI
+          automation. The fastest way to reach me is email.
+        </p>
+
+        <div class="contact__grid">
+          <a href="mailto:garvits5.work@gmail.com" class="contact__card reveal">
+            <span class="contact__label">Email</span>
+            <span class="contact__value">garvits5.work@gmail.com</span>
+            <svg class="contact__arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/garvitsharma1/" target="_blank" rel="noopener" class="contact__card reveal">
+            <span class="contact__label">LinkedIn</span>
+            <span class="contact__value">garvitsharma1</span>
+            <svg class="contact__arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a href="https://github.com/GarvitSharma0" target="_blank" rel="noopener" class="contact__card reveal">
+            <span class="contact__label">GitHub</span>
+            <span class="contact__value">@GarvitSharma0</span>
+            <svg class="contact__arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__name">Garvit Sharma</p>
+      <p class="footer__meta">Based in Noida, India</p>
+      <p class="footer__year"><span class="prompt">$</span> echo $YEAR &rarr; 2026</p>
     </footer>
-    <script src="script.js"></script>
+
+    <!-- project case-study modal (populated by script.js) -->
+    <div class="modal" id="case-modal" aria-hidden="true">
+      <div class="modal__scrim" data-close></div>
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="case-modal-title">
+        <button class="modal__close" aria-label="Close case study" data-close>&times;</button>
+        <p class="modal__tag" id="case-modal-tag"></p>
+        <h3 class="modal__title" id="case-modal-title"></h3>
+        <div class="modal__body"></div>
+        <div class="modal__links project__links"></div>
+      </div>
+    </div>
+
+    <!-- Lenis smooth-scroll: progressive enhancement only.
+         Site is fully usable (native scroll) if it fails to load. -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.0.42/lenis.min.js"
+      defer
+    ></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
