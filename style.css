@@ -1,24 +1,25 @@
 /* ============================================================
    Garvit Sharma — portfolio
-   Dark "data-engineer console" theme · restrained neon
+   Minimal monochrome theme · one living signal accent
    ============================================================ */
 
 :root {
-  --bg: #0a0c12;
-  --bg-2: #0e1119;
-  --surface: #12161f;
-  --surface-2: #161b26;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.13);
+  --bg: #0a0a0b;
+  --bg-2: #0f0f11;
+  --surface: #131315;
+  --surface-2: #19191c;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
 
-  --text: #e7ecf3;
-  --text-dim: #9aa4b5;
-  --text-faint: #868fa1;
+  --text: #f2f3f5;
+  --text-dim: #9a9aa3;
+  --text-faint: #6c6c75;
 
-  --accent: #38bdf8; /* sky */
-  --accent-2: #a78bfa; /* violet */
-  --accent-soft: rgba(56, 189, 248, 0.1);
-  --accent-line: rgba(56, 189, 248, 0.35);
+  /* the single accent — used sparingly, mostly on the progress rail */
+  --accent: #6ea8fe;
+  --accent-soft: rgba(110, 168, 254, 0.1);
+  --accent-line: rgba(110, 168, 254, 0.35);
+  --accent-glow: rgba(110, 168, 254, 0.55);
 
   --font-head: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
@@ -61,17 +62,17 @@ body::before {
   background:
     radial-gradient(
       120% 100% at 50% 45%,
-      rgba(8, 10, 16, 0.34) 0%,
-      rgba(8, 10, 16, 0.22) 40%,
-      rgba(8, 10, 16, 0.55) 100%
+      rgba(8, 8, 9, 0.34) 0%,
+      rgba(8, 8, 9, 0.22) 40%,
+      rgba(8, 8, 9, 0.55) 100%
     ),
-    linear-gradient(180deg, rgba(8, 10, 16, 0.2), transparent 22%);
+    linear-gradient(180deg, rgba(8, 8, 9, 0.2), transparent 22%);
 }
 /* keep plain text legible over the live particle wave */
 .hero__tagline,
 .about__body p,
 .contact__lead {
-  text-shadow: 0 1px 12px rgba(8, 10, 16, 0.7);
+  text-shadow: 0 1px 12px rgba(8, 8, 9, 0.7);
 }
 
 /* animated 3D particle-wave backdrop (rendered by script.js) */
@@ -95,7 +96,7 @@ img {
 }
 
 ::selection {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(110, 168, 254, 0.25);
   color: #fff;
 }
 
@@ -125,11 +126,11 @@ a:focus-visible,
   font-weight: 600;
 }
 
-/* ---------- section progress navigator (left rail) ---------- */
+/* ---------- section progress rail (the signature element) ---------- */
 .spine {
   position: fixed;
   top: 0;
-  left: 16px;
+  left: 24px;
   width: 60px;
   height: 100vh;
   z-index: 6;
@@ -142,26 +143,26 @@ a:focus-visible,
 }
 .spine path {
   fill: none;
-  stroke-width: 2.6;
+  stroke-width: 3;
   stroke-linecap: round;
 }
 .spine__track {
-  stroke: rgba(255, 255, 255, 0.07);
+  stroke: rgba(255, 255, 255, 0.09);
 }
 .spine__progress {
   stroke: var(--accent);
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
+  filter: drop-shadow(0 0 6px var(--accent-glow));
   transition: stroke-dashoffset 0.12s linear;
 }
 .spine__head {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  background: #eaf6ff;
-  box-shadow: 0 0 12px 3px rgba(56, 189, 248, 0.85);
+  background: #ffffff;
+  box-shadow: 0 0 14px 4px var(--accent-glow);
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -180,7 +181,7 @@ a:focus-visible,
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
   background: var(--bg);
   transition: width 0.3s var(--ease), height 0.3s var(--ease),
     border-color 0.3s, background 0.3s, box-shadow 0.3s;
@@ -188,20 +189,39 @@ a:focus-visible,
 .spine__node.passed .spine__dot {
   border-color: var(--accent);
   background: var(--accent);
-  box-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 8px var(--accent-line);
 }
 .spine__node.active .spine__dot {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   border-color: var(--accent);
   background: var(--accent);
-  box-shadow: 0 0 14px 3px rgba(56, 189, 248, 0.6);
+  box-shadow: 0 0 0 4px var(--accent-soft), 0 0 16px 3px var(--accent-glow);
+}
+/* connector tie: the active node reaches toward the section it marks,
+   so the rail reads as part of the page rather than a floating widget */
+.spine__node::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: width 0.35s var(--ease), opacity 0.35s ease;
+  pointer-events: none;
+}
+.spine__node.active::after {
+  width: 30px;
+  opacity: 1;
 }
 .spine__label {
   position: absolute;
   left: 100%;
   top: 50%;
-  margin-left: 0.4rem;
+  margin-left: 2.3rem; /* sits just past the connector tie */
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.3px;
@@ -251,13 +271,13 @@ a:focus-visible,
   font-size: 0.85rem;
 }
 .btn--primary {
-  background: linear-gradient(180deg, rgba(56, 189, 248, 0.18), rgba(56, 189, 248, 0.08));
+  background: linear-gradient(180deg, rgba(110, 168, 254, 0.16), rgba(110, 168, 254, 0.05));
   border-color: var(--accent-line);
-  color: #eaf6ff;
+  color: #eaf2ff;
 }
 .btn--primary:hover {
   border-color: var(--accent);
-  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.22);
+  box-shadow: 0 8px 30px rgba(110, 168, 254, 0.18);
   transform: translateY(-2px);
 }
 .btn--ghost {
@@ -287,7 +307,7 @@ a:focus-visible,
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
-  background: rgba(10, 12, 18, 0.72);
+  background: rgba(10, 10, 11, 0.72);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--border);
@@ -324,7 +344,7 @@ a:focus-visible,
   bottom: -2px;
   width: 0;
   height: 1.5px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: var(--accent);
   transition: width 0.3s var(--ease);
 }
 .nav__links a:hover,
@@ -374,7 +394,7 @@ a:focus-visible,
   inset: 0 0 0 auto;
   width: min(80vw, 320px);
   z-index: 899;
-  background: rgba(14, 17, 25, 0.97);
+  background: rgba(15, 15, 17, 0.97);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-left: 1px solid var(--border);
@@ -397,7 +417,7 @@ a:focus-visible,
   position: fixed;
   inset: 0;
   z-index: 898;
-  background: rgba(4, 6, 10, 0.55);
+  background: rgba(6, 6, 7, 0.55);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   opacity: 0;
@@ -485,7 +505,7 @@ main {
   font-size: clamp(2.6rem, 9vw, 5.2rem);
   line-height: 1.02;
   letter-spacing: -0.03em;
-  background: linear-gradient(180deg, #ffffff, #b9c4d6);
+  background: linear-gradient(180deg, #ffffff, #a9abb2);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -506,10 +526,7 @@ main {
   min-height: 1.4em;
 }
 .hero__role {
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent);
 }
 .hero__caret {
   width: 2px;
@@ -644,8 +661,8 @@ main {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 10px #34d399;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
   animation: pulse 2s infinite;
 }
 @keyframes pulse {
@@ -934,7 +951,7 @@ main {
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.14), transparent 65%);
+  background: radial-gradient(circle, rgba(110, 168, 254, 0.1), transparent 65%);
   top: -140px;
   right: -120px;
   opacity: 0;
@@ -1051,7 +1068,7 @@ main {
   background: var(--accent-soft);
 }
 .project__link--accent:hover {
-  color: #eaf6ff;
+  color: #eaf2ff;
   border-color: var(--accent);
 }
 .project__link svg {
@@ -1172,9 +1189,9 @@ main {
 .skill-card,
 .contact__card,
 .stat {
-  background: rgba(20, 24, 34, 0.55);
-  -webkit-backdrop-filter: blur(10px) saturate(1.2);
-  backdrop-filter: blur(10px) saturate(1.2);
+  background: rgba(20, 20, 23, 0.55);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
@@ -1187,7 +1204,7 @@ main {
   .stat {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    background: rgba(18, 22, 31, 0.86);
+    background: rgba(18, 18, 21, 0.86);
   }
 }
 .tl__card,
@@ -1246,7 +1263,7 @@ main {
 .modal__scrim {
   position: absolute;
   inset: 0;
-  background: rgba(4, 6, 10, 0.72);
+  background: rgba(6, 6, 7, 0.72);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }

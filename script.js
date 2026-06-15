@@ -347,13 +347,12 @@
           if (sy < -30 || sy > H + 30) continue;
           const peak = (sCol + sRow + 2) / 4; // 0..1 (wave crest)
           const size = Math.max(0.5, scale * 0.9 * (0.7 + peak * 1.6));
-          const alpha = Math.min(
-            0.92,
-            (0.22 + peak * 0.55) * (0.4 + depth * 0.85)
-          );
+          // monochrome: faint cool-white particles, dimmed so the rail stays the focus
+          const alpha =
+            Math.min(0.92, (0.22 + peak * 0.55) * (0.4 + depth * 0.85)) * 0.72;
           ctx.beginPath();
           ctx.arc(sx, sy, size, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(96, 165, 250, " + alpha.toFixed(3) + ")";
+          ctx.fillStyle = "rgba(206, 211, 220, " + alpha.toFixed(3) + ")";
           ctx.fill();
         }
       }
