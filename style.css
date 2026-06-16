@@ -126,6 +126,48 @@ a:focus-visible,
   font-weight: 600;
 }
 
+/* ---------- custom cursor (desktop, fine pointer; JS-driven) ---------- */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  will-change: transform;
+}
+.cursor-dot {
+  width: 7px;
+  height: 7px;
+  background: #f2f3f5;
+  box-shadow: 0 0 10px 2px rgba(230, 235, 245, 0.5); /* soft monochrome glow */
+  transition: opacity 0.3s ease;
+}
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 16px rgba(230, 235, 245, 0.12);
+  transition: width 0.25s var(--ease), height 0.25s var(--ease),
+    border-color 0.25s, background 0.25s, opacity 0.3s ease;
+}
+.cursor-ready .cursor-dot,
+.cursor-ready .cursor-ring {
+  opacity: 1;
+}
+.cursor-ring.is-hover {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+}
+body.cursor-on,
+body.cursor-on * {
+  cursor: none;
+}
+
 /* ---------- section progress rail (the signature element) ---------- */
 .spine {
   position: fixed;
@@ -631,6 +673,33 @@ main {
 }
 .about__portrait-stage {
   position: relative;
+}
+/* frosted-glass backing so the cut-out portrait doesn't read as washed out */
+.about__portrait-stage::before {
+  content: "";
+  position: absolute;
+  inset: 3% -2% 5%;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(36, 38, 45, 0.6), rgba(18, 19, 24, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  backdrop-filter: blur(10px) saturate(1.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 24px 60px rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+/* soft monochrome glow lifting the subject off the background */
+.about__portrait-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 34%;
+  width: 86%;
+  height: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 208, 222, 0.11), transparent 72%);
+  z-index: 0;
+  pointer-events: none;
 }
 .about__portrait-stage img {
   position: relative;

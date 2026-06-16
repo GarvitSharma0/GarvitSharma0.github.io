@@ -301,6 +301,52 @@
     });
   }
 
+  /* ---------- custom cursor (desktop, fine pointer) ---------- */
+  if (finePointer && !prefersReduced) {
+    const dot = document.createElement("div");
+    const ring = document.createElement("div");
+    dot.className = "cursor-dot";
+    ring.className = "cursor-ring";
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    document.body.classList.add("cursor-on");
+
+    let mx = window.innerWidth / 2,
+      my = window.innerHeight / 2,
+      rx = mx,
+      ry = my;
+    document.addEventListener("mousemove", function (e) {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform =
+        "translate(" + mx + "px," + my + "px) translate(-50%, -50%)";
+      document.body.classList.add("cursor-ready");
+    });
+    document.addEventListener("mouseleave", function () {
+      document.body.classList.remove("cursor-ready");
+    });
+    (function ringLoop() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.transform =
+        "translate(" + rx + "px," + ry + "px) translate(-50%, -50%)";
+      requestAnimationFrame(ringLoop);
+    })();
+
+    document
+      .querySelectorAll(
+        "a, button, .project, .skill-card, .contact__card, .stat, .spine__node"
+      )
+      .forEach(function (el) {
+        el.addEventListener("mouseenter", function () {
+          ring.classList.add("is-hover");
+        });
+        el.addEventListener("mouseleave", function () {
+          ring.classList.remove("is-hover");
+        });
+      });
+  }
+
   /* ---------- animated 3D particle-wave backdrop ---------- */
   (function () {
     const canvas = document.getElementById("bg-canvas");
@@ -317,6 +363,32 @@
     const amp = 42; // wave amplitude
     let W, H, dpr, raf, t = 0, running = true;
 
+    // reusable projection buffers (grid size is fixed for the session)
+    const N = COLS * ROWS;
+    const PX = new Float32Array(N);
+    const PY = new Float32Array(N);
+    const PS = new Float32Array(N);
+    const PA = new Float32Array(N);
+    const PV = new Uint8Array(N);
+
+    // drifting ambient motes — fill the open space above the wave with the
+    // same particle motif so the scene reads complete top-to-bottom
+    const MOTES = coarse ? 38 : 66;
+    const motes = new Array(MOTES);
+    function seedMotes() {
+      for (let i = 0; i < MOTES; i++) {
+        motes[i] = {
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: 0.6 + Math.random() * 1.5,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: -(0.04 + Math.random() * 0.16), // slow upward drift
+          a: 0.1 + Math.random() * 0.28,
+          tw: Math.random() * Math.PI * 2, // twinkle phase
+        };
+      }
+    }
+
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       W = window.innerWidth;
@@ -326,35 +398,111 @@
       canvas.style.width = W + "px";
       canvas.style.height = H + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seedMotes();
     }
 
+    // project the grid once, then draw a faint wireframe mesh and dots on top
     function render() {
       ctx.clearRect(0, 0, W, H);
       const cx = W / 2;
       const horizon = H * 0.5;
+
+      // pass 0a — atmospheric glow pooled near the horizon, so the wave
+      // emerges from light and the open upper space isn't dead black
+      const glow = ctx.createRadialGradient(
+        cx, horizon * 1.16, 0,
+        cx, horizon * 1.16, Math.max(W, H) * 0.6
+      );
+      glow.addColorStop(0, "rgba(125, 135, 155, 0.08)");
+      glow.addColorStop(1, "rgba(125, 135, 155, 0)");
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, W, H);
+
+      // pass 0b — drifting ambient motes (behind the wave)
+      for (let i = 0; i < MOTES; i++) {
+        const m = motes[i];
+        m.x += m.vx;
+        m.y += m.vy;
+        if (m.y < -12) {
+          m.y = H + 12;
+          m.x = Math.random() * W;
+        }
+        if (m.x < -12) m.x = W + 12;
+        else if (m.x > W + 12) m.x = -12;
+        const tw = 0.7 + 0.3 * Math.sin(t * 1.4 + m.tw);
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(206, 211, 220, " + (m.a * tw).toFixed(3) + ")";
+        ctx.fill();
+      }
+
+      // pass 1 — project every grid point into screen space
       for (let r = 0; r < ROWS; r++) {
         const z = zNear + (zFar - zNear) * Math.pow(r / (ROWS - 1), 1.7);
         const scale = focal / z;
         const depth = 1 - r / ROWS; // 1 near, 0 far
+        const sRow = Math.sin(r * 0.3 + t * 0.8);
         for (let c = 0; c < COLS; c++) {
+          const i = r * COLS + c;
           const x = (c - (COLS - 1) / 2) * SEPX;
           const sx = cx + (focal * x) / z;
-          if (sx < -30 || sx > W + 30) continue;
           const sCol = Math.sin(c * 0.22 + t);
-          const sRow = Math.sin(r * 0.3 + t * 0.8);
           const w = (sCol + sRow) * amp;
           const sy = horizon + (focal * (camH - w)) / z;
-          if (sy < -30 || sy > H + 30) continue;
+          PX[i] = sx;
+          PY[i] = sy;
+          PV[i] = sx > -40 && sx < W + 40 && sy > -40 && sy < H + 40 ? 1 : 0;
           const peak = (sCol + sRow + 2) / 4; // 0..1 (wave crest)
-          const size = Math.max(0.5, scale * 0.9 * (0.7 + peak * 1.6));
-          // monochrome: faint cool-white particles, dimmed so the rail stays the focus
-          const alpha =
+          PS[i] = Math.max(0.5, scale * 0.9 * (0.7 + peak * 1.6));
+          PA[i] =
             Math.min(0.92, (0.22 + peak * 0.55) * (0.4 + depth * 0.85)) * 0.72;
-          ctx.beginPath();
-          ctx.arc(sx, sy, size, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(206, 211, 220, " + alpha.toFixed(3) + ")";
-          ctx.fill();
         }
+      }
+
+      // pass 2 — faint wireframe: contour lines along rows, struts down columns
+      ctx.lineWidth = 1;
+      for (let r = 0; r < ROWS; r++) {
+        const depth = 1 - r / ROWS;
+        ctx.strokeStyle =
+          "rgba(150, 160, 175, " + (0.05 + depth * 0.11).toFixed(3) + ")";
+        ctx.beginPath();
+        let pen = false;
+        for (let c = 0; c < COLS; c++) {
+          const i = r * COLS + c;
+          if (PV[i]) {
+            if (pen) ctx.lineTo(PX[i], PY[i]);
+            else {
+              ctx.moveTo(PX[i], PY[i]);
+              pen = true;
+            }
+          } else pen = false;
+        }
+        ctx.stroke();
+      }
+      ctx.strokeStyle = "rgba(150, 160, 175, 0.06)";
+      for (let c = 0; c < COLS; c++) {
+        ctx.beginPath();
+        let pen = false;
+        for (let r = 0; r < ROWS; r++) {
+          const i = r * COLS + c;
+          if (PV[i]) {
+            if (pen) ctx.lineTo(PX[i], PY[i]);
+            else {
+              ctx.moveTo(PX[i], PY[i]);
+              pen = true;
+            }
+          } else pen = false;
+        }
+        ctx.stroke();
+      }
+
+      // pass 3 — monochrome particles on top of the mesh
+      for (let i = 0; i < N; i++) {
+        if (!PV[i]) continue;
+        ctx.beginPath();
+        ctx.arc(PX[i], PY[i], PS[i], 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(206, 211, 220, " + PA[i].toFixed(3) + ")";
+        ctx.fill();
       }
     }
 
