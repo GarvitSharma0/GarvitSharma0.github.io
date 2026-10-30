@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <style>
     circle { fill: #161615; }
-    .a { fill: #f0461b; }
+    .a { fill: #159a53; }
     @media (prefers-color-scheme: dark) {
       circle { fill: #ebe9e3; }
-      .a { fill: #ff5a2c; }
+      .a { fill: #35d079; }
     }
   </style>
   <circle cx="12" cy="12" r="3" />
